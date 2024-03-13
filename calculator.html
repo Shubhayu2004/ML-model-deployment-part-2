@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Energy Demand Calculator</h2>
+    <h2>Energy Area Demand Calculator</h2>
     <div class="question">
         <label for="year">Which year do you want to know about </label>
         <select id="year">
@@ -55,6 +55,24 @@
     <div id="response"></div>
 </div>
 
+<div class="container">
+    <h2>Energy per capita Demand Calculator</h2>
+    <div class="question">
+        <label for="year1">Which year do you want to know about </label>
+        <select id="year1">
+            <option value="Normal Year  (2017-2019)">Normal</option>
+            <option value="Pandemic year  (2019-2022)">Pandemic</option>
+        </select>
+    </div>
+    <div class="question">
+        <label for="Houses"> Number of Houses  ?</label>
+        <input type="number" id="Houses">
+    </div>
+
+    <button onclick="calculateResponse1()">Calculate Response</button>
+    <div id="response1"></div>
+</div>
+
 <script>
     function calculateResponse() {
         var year = document.getElementById('year').value;
@@ -62,49 +80,84 @@
         var sqkm = parseFloat(document.getElementById('sqkm').value);
         var units;
         var price; // Total cost in rupees
-        var response = "Based on your inputs: ";
+        var response = "Based on your inputs: \n ";
 
         // Perform calculation based on the inputs
         if (year == "Normal Year (2017-2019)") {
-            response += "You have chosen a normal year. ";
+            response += "You have chosen a normal year.\n ";
             if (area == "Rural") {
                 units = sqkm * 200;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees.\n";
             } else if (area == "Semi Rural") {
                 units = sqkm * 150;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees.\n";
             } else {
                 units = sqkm * 100;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price.\n ";
+                response += "The total cost is " + price + " rupees.\n";
             }
         } else if (year == "Pandemic year (2019-2022)") {
             response += "You have chosen a pandemic year. ";
             if (area == "Rural") {
                 units = sqkm * 180;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price.\n ";
+                response += "The total cost is " + price + " rupees.\n";
             } else if (area == "Semi Rural") {
                 units = sqkm * 130;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price.\n ";
+                response += "The total cost is " + price + " rupees.\n";
             } else {
                 units = sqkm * 90;
                 price = units * 7; // Assuming each unit costs 7 rupees
-                response += "The estimated energy demand for this area is " + units + " price. ";
-                response += "The total cost is " + price + " rupees.";
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees.\n";
             }
         }
 
         document.getElementById('response').innerText = response;
     }
+
+
+    function calculateResponse1() {
+    var year1 = document.getElementById('year1').value;
+    var Houses = parseFloat(document.getElementById('Houses').value);
+    var response1 = "Based on your inputs:\n ";
+    var units1;
+    var price1;
+
+    // Perform calculation based on the inputs
+    if (year1 === "Normal Year  (2017-2019)") {
+        response1 += "You have chosen a normal year.\n ";
+        units1 = Houses * 100;
+        price1 = units1 * 23;
+        response1 += "The number of inputs would be " + units1 + " units. \n";
+        response1 += "The total price would be " + price1 + " rupees.\n";
+    } else if (year1 === "Pandemic year  (2019-2022)") {
+        response1 += "You have chosen a pandemic year.\n ";
+        units1 = Houses * 15;
+        price1 = units1 * 29;
+        response1 += "The number of inputs would be " + units1 + " units. \n";
+        response1 += "The total price would be " + price1 + " rupees.\n";
+    }
+
+    document.getElementById('response1').innerText = response1;
+}
+
+
+
+
+
+
+
+
+
 </script>
 
 
