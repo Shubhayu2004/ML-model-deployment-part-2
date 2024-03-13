@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Demand Predictor</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .question {
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Energy Demand Calculator</h2>
+    <div class="question">
+        <label for="year">Which year do you want to know about </label>
+        <select id="year">
+            <option value="Normal Year (2017-2019)">Normal</option>
+            <option value="Pandemic year (2019-2022)">Pandemic</option>
+        </select>
+    </div>
+    <div class="question">
+        <label for="area">Which Type of area </label>
+        <select id="area">
+            <option value="Rural">Rural</option>
+            <option value="Semi Rural">Semi Rural</option>
+            <option value="Urban">Urban</option>
+        </select>
+    </div>
+    <div class="question">
+        <label for="sqkm">For how much area do you want to calculate ?</label>
+        <input type="number" id="sqkm">
+    </div>
+
+    <button onclick="calculateResponse()">Calculate Response</button>
+    <div id="response"></div>
+</div>
+
+<script>
+    function calculateResponse() {
+        var year = document.getElementById('year').value;
+        var area = document.getElementById('area').value;
+        var sqkm = parseFloat(document.getElementById('sqkm').value);
+        var units;
+        var price; // Total cost in rupees
+        var response = "Based on your inputs: ";
+
+        // Perform calculation based on the inputs
+        if (year == "Normal Year (2017-2019)") {
+            response += "You have chosen a normal year. ";
+            if (area == "Rural") {
+                units = sqkm * 200;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            } else if (area == "Semi Rural") {
+                units = sqkm * 150;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            } else {
+                units = sqkm * 100;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            }
+        } else if (year == "Pandemic year (2019-2022)") {
+            response += "You have chosen a pandemic year. ";
+            if (area == "Rural") {
+                units = sqkm * 180;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            } else if (area == "Semi Rural") {
+                units = sqkm * 130;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            } else {
+                units = sqkm * 90;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. ";
+                response += "The total cost is " + price + " rupees.";
+            }
+        }
+
+        document.getElementById('response').innerText = response;
+    }
+</script>
+
+
+
+
+</body>
+</html>
